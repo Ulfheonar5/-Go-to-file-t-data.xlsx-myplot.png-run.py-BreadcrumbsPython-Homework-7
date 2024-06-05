@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastgele Noktalar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Mert Töke</h1>
+        <p>Öğrenci Numarası: 211220041</p>
+    </div>
+    <div class="plot-container">
+        <img id="plot" src="{{ url_for('generate_plot') }}" alt="Plot">
+    </div>
+    <div class="button-container">
+        <button onclick="refreshPlot()">Yeni Noktalar Oluştur</button>
+    </div>
+
+    <script>
+        function refreshPlot() {
+            document.getElementById('plot').src = "{{ url_for('generate_plot') }}" + "?" + new Date().getTime();
+        }
+    </script>
+</body>
+</html>
